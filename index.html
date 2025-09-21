@@ -1,32 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/flowers.png" type="image/x-icon">
-    <title>Mi pocoyo</title>
+  <meta charset="UTF-8">
+  <title>Flores Amarillas</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(to top, #fff7d6, #ffe97f);
+      overflow: hidden;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    h1 {
+      font-size: 28px;
+      color: #d4a017;
+      text-shadow: 1px 1px 2px #fff;
+      margin-bottom: 20px;
+      text-align: center;
+      max-width: 90%;
+    }
+    .btn {
+      padding: 12px 25px;
+      background-color: #f7c600;
+      border: none;
+      border-radius: 25px;
+      color: #fff;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 16px;
+      transition: 0.3s;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #e0a800;
+    }
+    .flower {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background-image: url('flower.png');
+      background-size: cover;
+      animation: float 12s linear infinite;
+    }
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
 </head>
-
 <body>
-    <div class="greetings">
-        <span>H</span>
-        <span>o</span>
-        <span>l</span>
-        <span>a</span>
-        <span>!</span>
-    </div>
-    <div class="description">
-        <span>ES MI DECLARACIÓN AZU</span>
-    </div>
-    <div class="button">
-        <button class="botones">
-            <a href="flower.html" style="color: #fff;">CLICK AQUÍ</a>
-        </button>
-    </div>
+  <h1>🌼 Las flores amarillas simbolizan la felicidad y tú eres la mía 🌼</h1>
+  <a href="pagina2.html" class="btn">Ir a la otra página</a>
 
+  <audio autoplay loop>
+    <source src="music.mp3" type="audio/mpeg">
+    Tu navegador no soporta audio.
+  </audio>
+
+  <script>
+    function crearFlores() {
+      for (let i = 0; i < 20; i++) {
+        let flower = document.createElement("div");
+        flower.classList.add("flower");
+        flower.style.left = Math.random() * window.innerWidth + "px";
+        flower.style.animationDuration = (8 + Math.random() * 5) + "s";
+        document.body.appendChild(flower);
+        setTimeout(() => { flower.remove(); }, 15000);
+      }
+    }
+    setInterval(crearFlores, 2000);
+    crearFlores();
+  </script>
 </body>
-
 </html>

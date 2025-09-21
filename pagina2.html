@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Flor Amarilla con Slider y Letra Karaoke</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #e0f7fa;
+      font-family: "Segoe UI", Arial, sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      position: absolute;
+      top: 20px;
+      width: 100%;
+      text-align: center;
+      font-size: 2rem;
+      color: #333;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+    }
+
+    /* === Flor === */
+    .scene {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      animation: grow 3s ease-out forwards;
+      transform: scale(0);
+      transform-origin: bottom center;
+    }
+
+    @keyframes grow {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+
+    .stem {
+      width: 14px;
+      height: 200px;
+      background: linear-gradient(to bottom, #388e3c, #1b5e20);
+      border-radius: 10px;
+      position: relative;
+      margin-top: 40px;
+    }
+
+    .leaf {
+      position: absolute;
+      width: 60px;
+      height: 30px;
+      background: radial-gradient(circle at center, #4caf50 30%, #2e7d32 100%);
+      border-radius: 50%;
+      top: 60px;
+    }
+    .leaf.left { left: -55px; transform: rotate(-30deg); }
+    .leaf.right { right: -55px; transform: rotate(30deg); }
+
+    .flower {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin-bottom: -50px;
+      animation: sway 4s ease-in-out infinite 3s;
+      transform-origin: bottom center;
+    }
+
+    .petal {
+      position: absolute;
+      width: 70px;
+      height: 120px;
+      background: radial-gradient(circle at center, #ffeb3b 40%, #fbc02d 100%);
+      border-radius: 50%;
+      top: 20px;
+      left: 65px;
+      transform-origin: bottom center;
+      opacity: 0;
+      transform: scale(0) rotate(var(--angle));
+      animation: bloom 3s forwards;
+    }
+
+    .center {
+      position: absolute;
+      top: 65%;
+      left: 50%;
+      width: 90px;
+      height: 90px;
+      background: radial-gradient(circle at center, #6d4c41 30%, #3e2723 100%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
+      z-index: 3;
+      animation: appear 2s forwards 1.5s;
+    }
+
+    @keyframes bloom {
+      0%   { transform: scale(0) rotate(var(--angle)); opacity: 0; }
+      60%  { transform: scale(1.2) rotate(var(--angle)); opacity: 1; }
+      100% { transform: scale(1) rotate(var(--angle)); opacity: 1; }
+    }
+
+    @keyframes appear {
+      0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
+      100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+    }
+
+    @keyframes sway {
+      0%   { transform: rotate(0deg); }
+      25%  { transform: rotate(3deg); }
+      50%  { transform: rotate(0deg); }
+      75%  { transform: rotate(-3deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    /* === Slider === */
+    .slider {
+      width: 400px;
+      height: 300px;
+      border: 10px solid #ffeb3b;
+      border-radius: 25px;
+      overflow: hidden;
+      position: relative;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    }
+
+    .slides {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slides img {
+      width: 400px;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .controls {
+      position: absolute;
+      bottom: 15px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .dot {
+      width: 14px;
+      height: 14px;
+      background: #fff;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid #ffeb3b;
+    }
+    .dot.active {
+      background: #ffeb3b;
+    }
+
+    /* === Letra Karaoke === */
+    .lyrics {
+      margin-top: 40px;
+      font-size: 1.3rem;
+      color: #333;
+      text-align: center;
+      min-height: 50px;
+    }
+    .fade {
+      animation: fadeOut 2s forwards;
+    }
+    @keyframes fadeOut {
+      from { opacity: 1; }
+      to { opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Música de fondo -->
+  <audio id="audio" autoplay loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>🌻 Las flores amarillas simbolizan la felicidad, ¡y tú eres la mía! 🌻</h1>
+
+  <div class="container">
+    <!-- Flor -->
+    <div class="scene">
+      <div class="flower">
+        <div class="petal" style="--angle: 0deg;"></div>
+        <div class="petal" style="--angle: 30deg;"></div>
+        <div class="petal" style="--angle: 60deg;"></div>
+        <div class="petal" style="--angle: 90deg;"></div>
+        <div class="petal" style="--angle: 120deg;"></div>
+        <div class="petal" style="--angle: 150deg;"></div>
+        <div class="petal" style="--angle: 180deg;"></div>
+        <div class="petal" style="--angle: 210deg;"></div>
+        <div class="petal" style="--angle: 240deg;"></div>
+        <div class="petal" style="--angle: 270deg;"></div>
+        <div class="petal" style="--angle: 300deg;"></div>
+        <div class="petal" style="--angle: 330deg;"></div>
+        <div class="center"></div>
+      </div>
+      <div class="stem">
+        <div class="leaf left"></div>
+        <div class="leaf right"></div>
+      </div>
+    </div>
+
+    <!-- Slider -->
+    <div class="slider">
+      <div class="slides" id="slides">
+        <img src="IMAGEN1.jpeg" alt="Imagen 1">
+        <img src="IMAGEN2.jpeg" alt="Imagen 2">
+        <img src="IMAGEN3.jpeg" alt="Imagen 3">
+      </div>
+      <div class="controls">
+        <div class="dot active" onclick="goToSlide(0)"></div>
+        <div class="dot" onclick="goToSlide(1)"></div>
+        <div class="dot" onclick="goToSlide(2)"></div>
+      </div>
+    </div>
+  </div>  
+
+  <!-- Letra -->
+  <div class="lyrics" id="lyrics"></div>
+
+  <script>
+    /* === Slider === */
+    let currentSlide = 0;
+    const slides = document.getElementById("slides");
+    const dots = document.querySelectorAll(".dot");
+
+    function goToSlide(n) {
+      currentSlide = n;
+      slides.style.transform = `translateX(-${400 * n}px)`;
+      dots.forEach((dot, i) => dot.classList.toggle("active", i === n));
+    }
+
+    setInterval(() => {
+      currentSlide = (currentSlide + 1) % 3;
+      goToSlide(currentSlide);
+    }, 4000);
+
+    /* === Karaoke === */
+    const audio = document.getElementById("audio");
+    const lyricsDiv = document.getElementById("lyrics");
+
+    // ejemplo de letra con tiempos (segundos)
+     const lyrics = [
+    { time: 5, text: "Eres mi señorita correcta, señorita correcta" },
+    { time: 10, text: "Si te pierdo, es un error ¿Verdad? Señorita correcta (Todo bien)" },
+    { time: 15, text: "Eres mi señorita correcta, señorita correcta" },
+    { time: 20, text: "Chica quieres un beso mío, ¿Verdad? Señorita correcta (Todo bien)" },
+    { time: 25, text: "Tu sexy mente y tu sexy cuerpo" },
+    { time: 30, text: "Incluso naciste con un sexy cerebro" },
+    { time: 35, text: "Solo en jeans, una camiseta blanca y unas converse" },
+    { time: 40, text: "Eso me hace querer festejar en tu cuerpo" },
+    { time: 45, text: "Al final de tu larga cabellera, brillante, tus suaves caderas zumban" },
+    { time: 50, text: "Eres como un bosque que brilla dentro de la ciudad" },
+    { time: 55, text: "Con ese cuerpo irreal, abrazas mi realidad" },
+    { time: 60, text: "Y quiero que seas realmente, realmente real para mí" },
+    { time: 65, text: "A veces como mi mamá, a veces eres mi energía" },
+    { time: 70, text: "Soy un chico honesto" },
+    { time: 75, text: "Soy tan bonito por fuera que mis enemigos no pueden dejar de ser honestos" },
+    { time: 80, text: "Eres tan diferente de la gente normal" },
+    { time: 85, text: "Es por eso que eres llamada la tipo ideal" },
+    { time: 90, text: "Sí, cuando pienso en ti, mi corazón se enfría" },
+    { time: 95, text: "Quiero caminar contigo al lado del océano en invierno" },
+    { time: 100, text: "Sí, tú eres mi única chica, eres la mejor" },
+    { time: 105, text: "Quiero saber acerca de tu día, quiero llegar a ser tus suspiros" },
+    { time: 110, text: "Sí, tú eres mi única chica, eres la mejor" },
+    { time: 115, text: "Eres alguien que sólo existe en las películas" },
+    { time: 120, text: "Incluso el clima es bueno, creo que estoy perfecto contigo" },
+    { time: 125, text: "¿Quieres que caminemos juntos? ¿Quieres que caminemos juntos?" },
+    { time: 130, text: "Incluso el clima es bueno, creo que estoy perfecto contigo" },
+    { time: 135, text: "Eres alguien que sólo existe en las novelas" },
+    { time: 140, text: "Eres tú" },
+    { time: 145, text: "¿Cómo puede una persona ser así?" },
+    { time: 150, text: "Empiezo a sentir que soy el único que vive en este mundo" },
+    { time: 155, text: "Tú pasas a mi lado, un dulce viento sopla a mi lado" },
+    { time: 160, text: "Incluso si no te pones maquillaje" },
+    { time: 165, text: "Te pondrás tu perfume llamado atracción" },
+    { time: 170, text: "Nunca creí que había un dios" },
+    { time: 175, text: "Pero ahora me haces creer, porque para mí eres una diosa" },
+    { time: 180, text: "Tanto si eres joven o vieja, si tienes un hijo oculto" },
+    { time: 185, text: "No me importa, porque te amo" },
+    { time: 190, text: "Si estoy contigo, dondequiera que vayamos es un jardín de flores" },
+    { time: 195, text: "En lugar de sostener tus bolsas, me tomas de la mano" },
+    { time: 200, text: "En lugar de los celos y la envidia, tú entiendes mi naturaleza" },
+    { time: 205, text: "Contigo, dibujo mi futuro" },
+    { time: 210, text: "En medio de nuestros zapatos de pareja hay un par de zapatos de bebé" },
+    { time: 215, text: "Si tú eres mi única chica, eres la mejor" },
+    { time: 220, text: "Quiero saber acerca de tu día, quiero llegar a ser tus suspiros" },
+    { time: 225, text: "Si tú eres mi única chica, eres la mejor" },
+    { time: 230, text: "Eres alguien que sólo existe en las películas" },
+    { time: 235, text: "Eres tú" }
+  ];
+
+
+    let currentLine = 0;
+
+    audio.ontimeupdate = () => {
+      if (currentLine < lyrics.length && audio.currentTime >= lyrics[currentLine].time) {
+        lyricsDiv.textContent = lyrics[currentLine].text;
+        lyricsDiv.classList.remove("fade");
+        
+        // hacer desaparecer la línea después de 3s
+        setTimeout(() => {
+          lyricsDiv.classList.add("fade");
+        }, 3000);
+
+        currentLine++;
+      }
+    };
+  </script>
+</body>
+</html>
