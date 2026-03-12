@@ -1,79 +1,189 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Flores Amarillas</title>
-  <style>
-    body {
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(to top, #fff7d6, #ffe97f);
-      overflow: hidden;
-      font-family: 'Segoe UI', sans-serif;
-    }
-    h1 {
-      font-size: 28px;
-      color: #d4a017;
-      text-shadow: 1px 1px 2px #fff;
-      margin-bottom: 20px;
-      text-align: center;
-      max-width: 90%;
-    }
-    .btn {
-      padding: 12px 25px;
-      background-color: #f7c600;
-      border: none;
-      border-radius: 25px;
-      color: #fff;
-      font-weight: bold;
-      cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
-      text-decoration: none;
-    }
-    .btn:hover {
-      background-color: #e0a800;
-    }
-    .flower {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background-image: url('flower.png');
-      background-size: cover;
-      animation: float 12s linear infinite;
-    }
-    @keyframes float {
-      0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-120vh) rotate(360deg); opacity: 0; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversario, Amor</title>
+    <style>
+        :root {
+            --color-primario: #ff4d6d;
+            --color-secundario: #ffb3c1;
+            --fondo: #fff0f3;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--fondo);
+            overflow-x: hidden;
+            height: 100%;
+        }
+
+        /* Página 1: Bienvenida */
+        #pagina1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            transition: transform 0.8s ease-in-out;
+        }
+
+        .corazon-grande {
+            font-size: 80px;
+            animation: latido 1.2s infinite;
+        }
+
+        @keyframes latido {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        button {
+            background-color: var(--color-primario);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            background-color: #ff1f4a;
+            transform: translateY(-3px);
+        }
+
+        /* Página 2: El Collage */
+        #pagina2 {
+            display: none;
+            padding: 20px;
+            min-height: 100vh;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+
+        .titulo-aniversario {
+            text-align: center;
+            color: var(--color-primario);
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        /* Collage de Fotos */
+        .collage-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .foto {
+            background: white;
+            padding: 10px 10px 30px 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transform: rotate(var(--rotacion));
+            transition: 0.3s;
+        }
+
+        .foto:hover {
+            transform: rotate(0deg) scale(1.1);
+            z-index: 10;
+        }
+
+        .foto img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .oculto {
+            transform: translateY(-100vh);
+            position: absolute;
+            width: 100%;
+        }
+
+        #musica {
+            display: none;
+        }
+    </style>
 </head>
 <body>
-  <h1>🌼 Las flores amarillas simbolizan la felicidad y tú eres la mía 🌼</h1>
-  <a href="pagina2.html" class="btn">Ir a la otra página</a>
 
-  <audio autoplay loop>
-    <source src="music.mp3" type="audio/mpeg">
-    Tu navegador no soporta audio.
-  </audio>
+    <audio id="miMusica" loop>
+        <source src="amor_infinito.mp3" type="audio/mpeg">
+    </audio>
 
-  <script>
-    function crearFlores() {
-      for (let i = 0; i < 20; i++) {
-        let flower = document.createElement("div");
-        flower.classList.add("flower");
-        flower.style.left = Math.random() * window.innerWidth + "px";
-        flower.style.animationDuration = (8 + Math.random() * 5) + "s";
-        document.body.appendChild(flower);
-        setTimeout(() => { flower.remove(); }, 15000);
-      }
-    }
-    setInterval(crearFlores, 2000);
-    crearFlores();
-  </script>
+    <div id="pagina1">
+        <div class="corazon-grande">❤️</div>
+        <h1 style="color: #ff4d6d;">¿Estás lista para una sorpresa?</h1>
+        <p>Presiona el botón para ver nuestro camino juntos</p>
+        <button onclick="cambiarPagina()">Siguiente ➔</button>
+    </div>
+
+    <div id="pagina2">
+        <h1 class="titulo-aniversario">✨ Nuestro Amor en Fotos - Feliz Aniversario Mi Azu✨</h1>
+        
+        <div class="collage-container">
+            <div class="foto" style="--rotacion: -5deg">
+                <img src="img/1.jpeg" alt="Momento 1">
+            </div>
+            <div class="foto" style="--rotacion: 3deg">
+                <img src="img/9.jpeg" alt="Momento 2">
+            </div>
+            <div class="foto" style="--rotacion: -2deg">
+                <img src="img/7.jpeg" alt="Momento 3">
+            </div>
+            <div class="foto" style="--rotacion: 6deg">
+                <img src="img/4.jpeg" alt="Momento 4">
+            </div>
+            <div class="foto" style="--rotacion: -4deg">
+                <img src="img/5.jpeg" alt="Momento 5">
+            </div>
+            <div class="foto" style="--rotacion: 1deg">
+                <img src="img/6.jpeg" alt="Momento 6">
+            </div>
+            <div class="foto" style="--rotacion: 1deg">
+                <img src="img/12.jpeg" alt="Momento 6">
+            </div>
+             <div class="foto" style="--rotacion: 1deg">
+                <img src="img/13.jpeg" alt="Momento 6">
+            </div>
+        </div>
+
+        <div style="text-align: center; margin-top: 50px;">
+            <p style="color: #ff4d6d; font-style: italic;">"Eres lo mejor que me ha pasado. ¡Feliz Aniversario!"</p>
+        </div>
+    </div>
+
+    <script>
+        function cambiarPagina() {
+            // Animación de salida página 1
+            const p1 = document.getElementById('pagina1');
+            const p2 = document.getElementById('pagina2');
+            const musica = document.getElementById('miMusica');
+
+            p1.style.transform = 'translateY(-100vh)';
+            
+            setTimeout(() => {
+                p1.style.display = 'none';
+                p2.style.display = 'block';
+                // Iniciar música
+                musica.play().catch(e => console.log("La reproducción automática requiere interacción del usuario"));
+                
+                // Animación de entrada página 2
+                setTimeout(() => {
+                    p2.style.opacity = '1';
+                }, 50);
+            }, 800);
+        }
+    </script>
 </body>
 </html>
