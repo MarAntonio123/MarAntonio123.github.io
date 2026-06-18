@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuestro Aniversario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital@1&family=Tangerine:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #FBF6EF;
+    --cream-deep: #F3E9DC;
+    --rose: #E8C4C4;
+    --rose-deep: #C98B8B;
+    --gold: #B8924A;
+    --gold-light: #D4B26A;
+    --ink: #4A3B36;
+    --ink-soft: #7A6A63;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Cormorant Garamond', serif;
+    overflow-x: hidden;
+    position: relative;
+  }
+
+  /* ---------- Pétalos flotantes ---------- */
+  #petals {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 5;
+    overflow: hidden;
+  }
+  .petal {
+    position: absolute;
+    top: -5%;
+    font-size: 16px;
+    opacity: 0.55;
+    color: var(--rose-deep);
+    animation: fall linear infinite;
+    user-select: none;
+  }
+  @keyframes fall {
+    0%   { transform: translateY(0) translateX(0) rotate(0deg); }
+    100% { transform: translateY(110vh) translateX(40px) rotate(360deg); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .petal { animation: none; display: none; }
+    html { scroll-behavior: auto; }
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 24px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .hero .eyebrow {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    font-size: 13px;
+    color: var(--gold);
+    margin-bottom: 18px;
+    font-weight: 600;
+  }
+
+  .hero h1 {
+    font-family: 'Tangerine', cursive;
+    font-size: clamp(64px, 14vw, 130px);
+    color: var(--rose-deep);
+    line-height: 1;
+    font-weight: 700;
+    text-shadow: 0 2px 18px rgba(201, 139, 139, 0.25);
+  }
+
+  .hero .names {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(18px, 3vw, 26px);
+    color: var(--ink);
+    margin-top: 14px;
+    letter-spacing: 0.02em;
+  }
+
+  .heart-divider {
+    margin: 28px 0;
+    color: var(--gold);
+    font-size: 20px;
+    letter-spacing: 14px;
+  }
+
+  .counter-wrap {
+    margin-top: 10px;
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .counter-box {
+    min-width: 88px;
+  }
+
+  .counter-num {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 5vw, 46px);
+    color: var(--gold);
+    font-weight: 700;
+  }
+
+  .counter-label {
+    font-size: 13px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-top: 4px;
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 34px;
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.7;
+    animation: bob 2.4s ease-in-out infinite;
+  }
+  @keyframes bob {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+  }
+
+  /* ---------- Sección carta ---------- */
+  .letter-section {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 100px 28px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: clamp(26px, 4vw, 36px);
+    color: var(--rose-deep);
+    margin-bottom: 28px;
+  }
+
+  .letter-text {
+    font-size: clamp(18px, 2.4vw, 22px);
+    line-height: 1.85;
+    color: var(--ink);
+  }
+
+  .signature {
+    margin-top: 32px;
+    font-family: 'Tangerine', cursive;
+    font-size: 42px;
+    color: var(--gold);
+  }
+
+  /* ---------- Carrusel ---------- */
+  .carousel-section {
+    padding: 60px 0 110px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .carousel {
+    position: relative;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .carousel-frame {
+    position: relative;
+    border-radius: 18px;
+    overflow: hidden;
+    aspect-ratio: 4/5;
+    background: var(--cream-deep);
+    box-shadow: 0 24px 60px -20px rgba(74, 59, 54, 0.35), 0 0 0 1px rgba(184, 146, 74, 0.15);
+  }
+
+  .carousel-track {
+    display: flex;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .carousel-slide {
+    flex: 0 0 100%;
+    height: 100%;
+    position: relative;
+  }
+
+  .carousel-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  .carousel-caption {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 26px 22px 18px;
+    background: linear-gradient(to top, rgba(74,59,54,0.65), transparent);
+    color: #FBF6EF;
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 16px;
+    text-align: left;
+  }
+
+  .carousel-frame::after {
+    content: '';
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(251, 246, 239, 0.55);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--cream);
+    border: 1px solid var(--gold-light);
+    color: var(--gold);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background 0.25s, color 0.25s, transform 0.25s;
+    z-index: 3;
+  }
+  .carousel-btn:hover { background: var(--gold); color: var(--cream); }
+  .carousel-btn:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 2px; }
+  .carousel-btn.prev { left: -4px; }
+  .carousel-btn.next { right: -4px; }
+
+  @media (min-width: 560px) {
+    .carousel-btn.prev { left: -22px; }
+    .carousel-btn.next { right: -22px; }
+  }
+
+  .carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 22px;
+  }
+
+  .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--rose);
+    opacity: 0.5;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    transition: opacity 0.25s, transform 0.25s, background 0.25s;
+  }
+  .dot.active {
+    opacity: 1;
+    background: var(--gold);
+    transform: scale(1.25);
+  }
+  .dot:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 2px; }
+
+  /* ---------- Letra de la canción ---------- */
+  .lyrics-section {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 28px 100px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+  }
+
+  .lyrics-card {
+    background: var(--cream-deep);
+    border: 1px solid var(--gold-light);
+    border-radius: 16px;
+    padding: 38px 30px;
+    box-shadow: 0 18px 45px -18px rgba(74, 59, 54, 0.25);
+    opacity: 0.55;
+    filter: saturate(0.7);
+    transition: opacity 0.6s ease, filter 0.6s ease;
+  }
+
+  .lyrics-card.playing {
+    opacity: 1;
+    filter: saturate(1);
+  }
+
+  .lyrics-song-name {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    margin-bottom: 18px;
+  }
+
+  .lyrics-text {
+    font-size: 18px;
+    line-height: 1.9;
+    color: var(--ink);
+    white-space: pre-line;
+  }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    text-align: center;
+    padding: 50px 24px 70px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .footer .heart-divider { margin-bottom: 22px; }
+
+  .footer p {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink-soft);
+  }
+
+  /* ---------- Reproductor de música ---------- */
+  .music-player {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--cream);
+    border: 1px solid var(--gold-light);
+    border-radius: 999px;
+    padding: 10px 18px 10px 10px;
+    box-shadow: 0 10px 30px -10px rgba(74, 59, 54, 0.35);
+  }
+
+  .music-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--gold);
+    color: var(--cream);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .music-toggle:focus-visible { outline: 2px solid var(--rose-deep); outline-offset: 2px; }
+
+  .music-label {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .music-bars {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    height: 14px;
+  }
+  .music-bars span {
+    width: 2px;
+    background: var(--gold);
+    border-radius: 1px;
+    animation: barpulse 1s ease-in-out infinite;
+  }
+  .music-bars span:nth-child(1) { height: 40%; animation-delay: 0s; }
+  .music-bars span:nth-child(2) { height: 100%; animation-delay: 0.15s; }
+  .music-bars span:nth-child(3) { height: 65%; animation-delay: 0.3s; }
+  .music-bars span:nth-child(4) { height: 85%; animation-delay: 0.45s; }
+  .paused .music-bars span { animation-play-state: paused; }
+
+  @keyframes barpulse {
+    0%, 100% { transform: scaleY(0.4); }
+    50% { transform: scaleY(1); }
+  }
+
+  @media (max-width: 480px) {
+    .music-label { display: none; }
+    .music-player { padding: 8px; }
+  }
+</style>
+</head>
+<body>
+
+<div id="petals"></div>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="eyebrow">Celebrando nuestro amor</div>
+  <h1>Tú &amp; Yo</h1>
+  <div class="names">12 de Junio, 2026</div>
+  <div class="heart-divider">♥ ♥ ♥</div>
+  <div class="counter-wrap" id="counter">
+    <div class="counter-box"><div class="counter-num" id="c-years">0</div><div class="counter-label">Años</div></div>
+    <div class="counter-box"><div class="counter-num" id="c-months">0</div><div class="counter-label">Meses</div></div>
+    <div class="counter-box"><div class="counter-num" id="c-days">0</div><div class="counter-label">Días</div></div>
+  </div>
+  <div class="scroll-hint">desliza para ver más ↓</div>
+</section>
+
+<!-- ============ CARTA ============ -->
+<section class="letter-section">
+  <div class="section-title">Para ti</div>
+  <p class="letter-text">
+    Cada día contigo se convierte en mi recuerdo favorito. Gracias por reír conmigo,
+    por sostener mi mano en los días difíciles y por hacer que cada momento simple
+    se sienta extraordinario. Esta página es solo una pequeña forma de decirte
+    lo agradecido que estoy de tenerte en mi vida.
+  </p>
+  <div class="signature">Con todo mi amor</div>
+</section>
+
+<!-- ============ CARRUSEL ============ -->
+<section class="carousel-section">
+  <div class="carousel">
+    <div class="carousel-frame">
+      <div class="carousel-track" id="track">
+        <div class="carousel-slide">
+          <img src="img/1.jpeg" alt="Foto 1 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?w=800&q=80'">
+          <div class="carousel-caption">Nuestro primer viaje juntos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/2.jpeg" alt="Foto 2 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'">
+          <div class="carousel-caption">Esa tarde de risas</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/3.jpeg" alt="Foto 3 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1529634597503-139d3726fed5?w=800&q=80'">
+          <div class="carousel-caption">El atardecer que no olvidamos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/4.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/5.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/6.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/8.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+        <div class="carousel-slide">
+          <img src="img/9.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+         <div class="carousel-slide">
+          <img src="img/10.jpeg" alt="Foto 4 de la pareja" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?w=800&q=80'">
+          <div class="carousel-caption">Celebrando juntos</div>
+        </div>
+
+      </div>
+      <button class="carousel-btn prev" id="prevBtn" aria-label="Foto anterior">&#10094;</button>
+      <button class="carousel-btn next" id="nextBtn" aria-label="Foto siguiente">&#10095;</button>
+    </div>
+    <div class="carousel-dots" id="dots"></div>
+  </div>
+</section>
+
+<!-- ============ LETRA DE LA CANCIÓN ============ -->
+<section class="lyrics-section" id="lyricsSection">
+  <div class="section-title">Nuestra canción</div>
+  <div class="lyrics-card" id="lyricsCard">
+    <div class="lyrics-song-name" id="lyricsSongName">Star — Kang Min Hyuk</div>
+    <p class="lyrics-text" id="lyricsText">
+        하늘에 빛나던 별이
+Haneure bitnadon byori
+
+조 몰리 빛나던 별이
+Jo molli bitnadon byori
+
+네 맘에 널 요원한데
+Ne mame neryowannabwa
+
+가슴에 세군진 별이
+Gaseume segyojin byori
+
+가슴에 빛나던 별이
+Gaseume bitnadon byori
+
+아마 노인-곳 같아
+Ama noin-got gata
+
+또리는 소리가 들리니
+Ttollineun soriga deullini
+
+O star
+O star
+
+
+뜨군 심장을 느끼니
+Tteugoun simjangeul neukkini
+
+Yo my star 아주 오렌 몬 옛날부토 나 꿈꾸와떤 사랑이
+Yo my star Aju oren mon yetnalbuto na kkumkkwowatdon sarangi
+
+노인-골 아라
+Noin-gol ara
+
+온제나 함께 해줘
+Onjena hamkke hejwo
+
+아주 오렌 시간을-로도
+Aju oren siganeul-lodo
+
+
+늘 같은 자리에서 빛나주길
+Neul gateun jarieso bitnajugil
+
+네맘 너에게만 빌려줄게
+Nemam noegeman billyojulge
+
+가슴에 세군진 별이
+Gaseume segyojin byori
+
+가슴에 빛나던 별이
+Gaseume bitnadon byori
+
+아마 노인-곳 같아
+Ama noin-got gata
+
+또리는 소리가 들리니
+Ttollineun soriga deullini
+
+O star
+O star
+
+
+뜨군 심장을 느끼니
+Tteugoun simjangeul neukkini
+
+Yo my star 아주 오렌 몬 옛날부토 나 꿈꾸와떤 사랑이
+Yo my star Aju oren mon yetnalbuto na kkumkkwowatdon sarangi
+
+노인-골 아라
+Noin-gol ara
+
+온제나 함께 해줘
+Onjena hamkke hejwo
+
+아주 오렌 시간을-로도
+Aju oren siganeul-lodo
+
+
+늘 같은 자리에서 빛나주길
+Neul gateun jarieso bitnajugil
+
+네맘 너에게만 줄게
+Nemam noegeman julge
+
+니맘속에 세군진 별도
+Nimamsoge segyojin byoldo
+
+니맘속 빛나던 별도
+Nimamsok bitnadon byoldo
+
+내게 말해 영원히 널 사랑해
+Naege marhe yongwonhi nol saranghe
+
+네맘 노만 바라볼고야
+Nemam noman barabolgoya
+
+또 노도 나만을 바라봐 줄레
+Tto nodo namaneul barabwa julle
+
+우리 소로예 별이 뒤 주길
+Uri soroye byori dwe jugil
+    </p>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<section class="footer">
+  <div class="heart-divider">♥</div>
+  <p>Gracias por elegirme cada día.</p>
+</section>
+
+<!-- ============ MUSIC PLAYER ============ -->
+<div class="music-player paused" id="musicPlayer">
+  <button class="music-toggle" id="musicToggle" aria-label="Reproducir música">▶</button>
+  <div class="music-bars"><span></span><span></span><span></span><span></span></div>
+  <div class="music-label">Star — Kang Min Hyuk</div>
+</div>
+<audio id="bgAudio" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // ---------- Pétalos flotantes ----------
+  (function petals() {
+    const container = document.getElementById('petals');
+    const count = window.innerWidth < 600 ? 10 : 18;
+    for (let i = 0; i < count; i++) {
+      const p = document.createElement('div');
+      p.className = 'petal';
+      p.textContent = '❀';
+      p.style.left = Math.random() * 100 + '%';
+      p.style.fontSize = (10 + Math.random() * 14) + 'px';
+      p.style.animationDuration = (10 + Math.random() * 12) + 's';
+      p.style.animationDelay = (Math.random() * 10) + 's';
+      container.appendChild(p);
+    }
+  })();
+
+  // ---------- Contador de tiempo juntos (fijo) ----------
+  (function counter() {
+    document.getElementById('c-years').textContent = 0;
+    document.getElementById('c-months').textContent = 9;
+    document.getElementById('c-days').textContent = 0;
+  })();
+
+  // ---------- Carrusel ----------
+  (function carousel() {
+    const track = document.getElementById('track');
+    const slides = track.children.length;
+    const dotsWrap = document.getElementById('dots');
+    let index = 0;
+    let autoplayId = null;
+
+    for (let i = 0; i < slides; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Ir a foto ' + (i + 1));
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    }
+    const dots = dotsWrap.children;
+
+    function goTo(i) {
+      index = (i + slides) % slides;
+      track.style.transform = `translateX(-${index * 100}%)`;
+      [...dots].forEach((d, di) => d.classList.toggle('active', di === index));
+    }
+
+    function restartAutoplay() {
+      if (autoplayId) clearInterval(autoplayId);
+      autoplayId = setInterval(() => goTo(index + 1), 5000);
+    }
+
+    document.getElementById('prevBtn').addEventListener('click', () => { goTo(index - 1); restartAutoplay(); });
+    document.getElementById('nextBtn').addEventListener('click', () => { goTo(index + 1); restartAutoplay(); });
+
+    // swipe en móvil
+    let startX = null;
+    const frame = document.querySelector('.carousel-frame');
+    frame.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    frame.addEventListener('touchend', e => {
+      if (startX === null) return;
+      const diff = e.changedTouches[0].clientX - startX;
+      if (diff > 40) { goTo(index - 1); restartAutoplay(); }
+      else if (diff < -40) { goTo(index + 1); restartAutoplay(); }
+      startX = null;
+    });
+
+    restartAutoplay();
+  })();
+
+  // ---------- Música ----------
+  (function music() {
+    const audio = document.getElementById('bgAudio');
+    const toggle = document.getElementById('musicToggle');
+    const player = document.getElementById('musicPlayer');
+
+    toggle.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play().catch(() => {});
+        toggle.textContent = '❚❚';
+        toggle.setAttribute('aria-label', 'Pausar música');
+        player.classList.remove('paused');
+        document.getElementById('lyricsCard').classList.add('playing');
+      } else {
+        audio.pause();
+        toggle.textContent = '▶';
+        toggle.setAttribute('aria-label', 'Reproducir música');
+        player.classList.add('paused');
+        document.getElementById('lyricsCard').classList.remove('playing');
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
