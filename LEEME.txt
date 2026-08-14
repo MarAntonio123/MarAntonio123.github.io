@@ -1,0 +1,42 @@
+PÁGINA DE ANIVERSARIO ❤️
+===========================
+
+ARCHIVOS:
+- index.html
+- styles.css
+- script.js
+- assets/
+
+CÓMO PERSONALIZARLA:
+1. Abre "script.js".
+2. En la parte superior encontrarás CONFIG.
+3. Cambia:
+   - tuNombre
+   - nombrePareja
+   - fechaInicio
+   - frases
+   - razones
+
+FOTOS:
+Pon dentro de la carpeta "assets" seis fotos con estos nombres:
+- foto1.jpg
+- foto2.jpg
+- foto3.jpg
+- foto4.jpg
+- foto5.jpg
+- foto6.jpg
+
+MÚSICA:
+Pon una canción MP3 dentro de "assets" y llámala:
+- nuestra-cancion.mp3
+
+CÓMO ABRIRLA:
+Haz doble clic en index.html.
+
+NOTA SOBRE MÚSICA:
+Los navegadores modernos no permiten reproducir música automáticamente
+sin interacción. Por eso la música se inicia cuando se pulsa
+"Abrir mi sorpresa".
+
+PARA PUBLICAR GRATIS:
+Puedes subir esta carpeta a GitHub Pages, Netlify o Vercel.

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#130b18" />
+  <title>Nuestro Aniversario ❤️</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <div class="cursor-glow" id="cursorGlow"></div>
+  <div class="noise"></div>
+  <div class="hearts-layer" id="heartsLayer" aria-hidden="true"></div>
+
+  <!-- Pantalla inicial: el clic permite activar la música en navegadores modernos -->
+  <section class="welcome-screen" id="welcomeScreen">
+    <div class="welcome-orb orb-one"></div>
+    <div class="welcome-orb orb-two"></div>
+
+    <div class="welcome-card">
+      <div class="mini-heart">♥</div>
+      <p class="eyebrow">UNA PEQUEÑA SORPRESA PARA TI</p>
+      <h1>Hay historias bonitas…<br><span>y luego está la nuestra.</span></h1>
+      <p class="welcome-copy">
+        Preparé este pequeño rincón para guardar algunos de nuestros recuerdos favoritos.
+      </p>
+
+      <button class="primary-btn" id="startExperience">
+        <span>Abrir mi sorpresa</span>
+        <span class="btn-heart">♥</span>
+      </button>
+
+      <p class="tiny-note">Activa el sonido para vivir la experiencia completa 🎵</p>
+    </div>
+  </section>
+
+  <!-- Música -->
+  <audio id="bgMusic" loop preload="metadata">
+    <source src="assets/music.mp3" type="audio/mpeg">
+  </audio>
+
+  <button class="music-btn" id="musicBtn" aria-label="Reproducir o pausar música" title="Música">
+    <span class="music-icon" id="musicIcon">♪</span>
+    <span class="music-bars" id="musicBars">
+      <i></i><i></i><i></i><i></i>
+    </span>
+  </button>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero section" id="inicio">
+      <div class="hero-light light-one"></div>
+      <div class="hero-light light-two"></div>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow">NUESTRO ANIVERSARIO</p>
+
+        <div class="names">
+          <span id="yourName">MARCO ANTONIO CHOQQUE HUAMANI</span>
+          <span class="amp">&</span>
+          <span id="partnerName">YENNY ASUCENA APARICIO SUCASACA</span>
+        </div>
+
+        <h2 class="hero-title">
+          <span id="typewriter"></span><span class="typing-caret">|</span>
+        </h2>
+
+        <p class="hero-description">
+          No quería regalarte solamente algo que pudieras guardar.
+          Quería regalarte un lugar al que siempre podamos volver.
+        </p>
+
+        <div class="date-pill">
+          <span>♥</span>
+          <span id="anniversaryPretty">Nuestra fecha especial</span>
+          <span>♥</span>
+        </div>
+
+        <a href="#contador" class="scroll-link">
+          <span>Desliza para recordar</span>
+          <span class="scroll-mouse"></span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CONTADOR -->
+    <section class="section counter-section" id="contador">
+      <div class="section-heading reveal">
+        <p class="eyebrow">DESDE QUE COMENZÓ NUESTRA HISTORIA</p>
+        <h2>Cada segundo contigo <em>cuenta</em>.</h2>
+        <p>Y todavía quiero sumar muchísimos más.</p>
+      </div>
+
+      <div class="counter-grid reveal">
+        <article class="counter-card">
+          <strong id="days">0</strong>
+          <span>Días</span>
+        </article>
+        <article class="counter-card">
+          <strong id="hours">00</strong>
+          <span>Horas</span>
+        </article>
+        <article class="counter-card">
+          <strong id="minutes">00</strong>
+          <span>Minutos</span>
+        </article>
+        <article class="counter-card">
+          <strong id="seconds">00</strong>
+          <span>Segundos</span>
+        </article>
+      </div>
+
+      <p class="counter-caption reveal" id="counterCaption">
+        Y mi parte favorita sigue siendo compartirlos contigo.
+      </p>
+    </section>
+
+    <!-- GALERÍA -->
+    <section class="section memories-section" id="recuerdos">
+      <div class="section-heading reveal">
+        <p class="eyebrow">NUESTROS RECUERDOS</p>
+        <h2>Pedacitos de <em>nosotros</em>.</h2>
+        <p>Haz clic en cualquier foto para verla completa.</p>
+      </div>
+
+      <div class="photo-grid">
+        <figure class="photo-card big reveal" data-full="assets/7.jpeg">
+          <div class="photo-shell">
+            <img src="assets/7.jpeg" alt="Nuestro recuerdo 1">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto1.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Nuestro comienzo</span>
+            <small>Ese día que nunca quiero olvidar.</small>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card tall reveal" data-full="assets/11.jpeg">
+          <div class="photo-shell">
+            <img src="assets/11.jpeg" alt="Nuestro recuerdo 2">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto2.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Tu sonrisa</span>
+            <small>Mi lugar favorito.</small>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card reveal" data-full="assets/6.jpeg">
+          <div class="photo-shell">
+            <img src="assets/6.jpeg" alt="Nuestro recuerdo 3">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto3.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Una aventura</span>
+            <small>Contigo todo se siente distinto.</small>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card reveal" data-full="assets/2.jpeg">
+          <div class="photo-shell">
+            <img src="assets/2.jpeg" alt="Nuestro recuerdo 4">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto4.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Un día cualquiera</span>
+            <small>Que contigo se volvió especial.</small>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card wide reveal" data-full="assets/16.jpeg">
+          <div class="photo-shell">
+            <img src="assets/16.jpeg" alt="Nuestro recuerdo 5">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto5.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Nosotros</span>
+            <small>Mi coincidencia favorita.</small>
+          </figcaption>
+        </figure>
+
+        <figure class="photo-card reveal" data-full="assets/18.jpeg">
+          <div class="photo-shell">
+            <img src="assets/18.jpeg" alt="Nuestro recuerdo 6">
+            <div class="photo-placeholder">Coloca aquí<br><b>foto6.jpg</b></div>
+          </div>
+          <figcaption>
+            <span>Por muchos más</span>
+            <small>Esto apenas empieza.</small>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FRASE DESTACADA -->
+    <section class="quote-section section">
+      <div class="quote-card reveal">
+        <div class="quote-mark">“</div>
+        <blockquote>
+          Si tuviera que volver a elegir una historia,
+          volvería a elegir la nuestra.
+        </blockquote>
+        <p>— <span id="signatureName">TU NOMBRE</span></p>
+      </div>
+    </section>
+
+    <!-- LÍNEA DE TIEMPO -->
+    <section class="section story-section" id="historia">
+      <div class="section-heading reveal">
+        <p class="eyebrow">NUESTRA HISTORIA</p>
+        <h2>Un camino hecho de <em>momentos</em>.</h2>
+      </div>
+
+      <div class="timeline">
+        <article class="timeline-item reveal">
+          <div class="timeline-dot">01</div>
+          <div class="timeline-card">
+            <span class="timeline-date">EL PRIMER CAPÍTULO</span>
+            <h3>Cuando todo comenzó</h3>
+            <p>
+              Ese momento en el que todavía no sabíamos cuántos recuerdos
+              íbamos a terminar construyendo juntos.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot">02</div>
+          <div class="timeline-card">
+            <span class="timeline-date">NUESTRA PRIMERA AVENTURA</span>
+            <h3>Aprendiendo a ser “nosotros”</h3>
+            <p>
+              Entre risas, conversaciones eternas y días imperfectos,
+              fui descubriendo lo bonito que era tenerte cerca.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot">03</div>
+          <div class="timeline-card">
+            <span class="timeline-date">TODOS ESOS PEQUEÑOS MOMENTOS</span>
+            <h3>La felicidad también vive en lo simple</h3>
+            <p>
+              En una mirada, una llamada, una comida juntos o un mensaje inesperado.
+              Ahí también vive nuestra historia.
+            </p>
+          </div>
+        </article>
+
+        <article class="timeline-item reveal">
+          <div class="timeline-dot">∞</div>
+          <div class="timeline-card">
+            <span class="timeline-date">LO QUE VIENE</span>
+            <h3>Mi capítulo favorito todavía no está escrito</h3>
+            <p>
+              Porque todavía nos quedan lugares, canciones, abrazos y recuerdos
+              que no hemos conocido.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- RAZONES -->
+    <section class="section reasons-section">
+      <div class="section-heading reveal">
+        <p class="eyebrow">COSAS QUE AMO DE TI</p>
+        <h2>Algunas razones… <em>de tantas.</em></h2>
+      </div>
+
+      <div class="reasons-grid" id="reasonsGrid"></div>
+    </section>
+
+    <!-- CARTA -->
+    <section class="section letter-section">
+      <div class="letter-wrap reveal">
+        <div class="letter-decoration">♥</div>
+        <p class="eyebrow">UNA ÚLTIMA COSA</p>
+        <h2>Te escribí algo que no cabía en una foto.</h2>
+        <p>
+          Hay palabras que merecen leerse despacio.
+        </p>
+
+        <button class="primary-btn" id="openLetter">
+          <span>Abrir mi carta</span>
+          <span>✦</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- FINAL -->
+    <section class="section finale-section">
+      <div class="finale-content reveal">
+        <p class="eyebrow">Y SI LLEGASTE HASTA AQUÍ…</p>
+        <h2>
+          Feliz aniversario,<br>
+          <span id="finalPartnerName">mi amor</span>.
+        </h2>
+        <p>
+          Gracias por existir en mi vida y por convertir tantos días normales
+          en recuerdos extraordinarios.
+        </p>
+
+        <button class="heart-burst-btn" id="heartBurstBtn">
+          <span>Presiona aquí</span>
+          <b>♥</b>
+        </button>
+
+        <small>Hecho con amor por <span id="footerName">TU NOMBRE</span>.</small>
+      </div>
+    </section>
+  </main>
+
+  <!-- LIGHTBOX -->
+  <div class="modal photo-modal" id="photoModal" aria-hidden="true">
+    <button class="modal-close" data-close="photoModal" aria-label="Cerrar">×</button>
+    <div class="photo-modal-content">
+      <img id="modalImage" src="" alt="Recuerdo ampliado">
+    </div>
+  </div>
+
+  <!-- CARTA MODAL -->
+  <div class="modal letter-modal" id="letterModal" aria-hidden="true">
+    <button class="modal-close" data-close="letterModal" aria-label="Cerrar">×</button>
+
+    <article class="paper">
+      <span class="paper-heart">♥</span>
+      <p class="paper-date" id="letterDate">Nuestra fecha</p>
+      <h3>Para ti, <span id="letterPartnerName">mi amor</span>:</h3>
+
+      <p>
+        A veces pienso en todo lo que tuvo que pasar para que coincidiéramos,
+        y me parece increíble que entre tantas personas y tantos caminos,
+        la vida me haya permitido encontrarte.
+      </p>
+
+      <p>
+        Gracias por cada sonrisa, por escucharme, por acompañarme y por ser parte
+        de esas pequeñas cosas que ahora tienen un significado enorme para mí.
+        No necesito que todos nuestros días sean perfectos; solo quiero que
+        sigamos eligiéndonos, aprendiendo y construyendo juntos.
+      </p>
+
+      <p>
+        Hoy no celebro solamente una fecha. Celebro nuestras conversaciones,
+        nuestras ocurrencias, nuestros planes, lo que superamos y todo lo que
+        todavía soñamos vivir.
+      </p>
+
+      <p>
+        Si esta historia tiene muchas páginas por delante, quiero seguir
+        escribiéndolas contigo.
+      </p>
+
+      <p class="paper-sign">
+        Te amo mi molosita ♥,<br>
+        <strong id="letterYourName">TU NOMBRE</strong> ♥
+      </p>
+    </article>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
