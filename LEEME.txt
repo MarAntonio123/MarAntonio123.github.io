@@ -1,42 +1,31 @@
-PÁGINA DE ANIVERSARIO ❤️
-===========================
+TRECE MESES CONTIGO - Página de aniversario
 
-ARCHIVOS:
-- index.html
-- styles.css
-- script.js
-- assets/
+Archivos:
+  index.html  -> estructura de la página (aquí está la carta)
+  style.css   -> diseño y colores
+  script.js   -> funciones; al inicio está el bloque CONFIG para personalizar
+  fotos/      -> pon aquí tus fotos
+  musica/     -> pon aquí su canción en .mp3
 
-CÓMO PERSONALIZARLA:
-1. Abre "script.js".
-2. En la parte superior encontrarás CONFIG.
-3. Cambia:
-   - tuNombre
-   - nombrePareja
-   - fechaInicio
-   - frases
-   - razones
+MÚSICA
+  Al abrir la página aparece una pantalla de bienvenida. Cuando ella toca
+  "Abrir mi regalo", la música empieza sola y sigue de fondo.
+  (Los navegadores no dejan sonar música sin que la persona toque la pantalla
+  primero; por eso existe esa pantalla).
 
-FOTOS:
-Pon dentro de la carpeta "assets" seis fotos con estos nombres:
-- foto1.jpg
-- foto2.jpg
-- foto3.jpg
-- foto4.jpg
-- foto5.jpg
-- foto6.jpg
+  Para usar SU canción:
+    1. Copia el archivo en la carpeta "musica" (ej. cancion.mp3).
+    2. En script.js, dentro de CONFIG, escribe:
+         cancion: "musica/cancion.mp3",
+  Si lo dejas vacío, suena la cajita musical.
 
-MÚSICA:
-Pon una canción MP3 dentro de "assets" y llámala:
-- nuestra-cancion.mp3
+FOTOS
+  1. Copia tus fotos en la carpeta "fotos" (ej. foto1.jpg, foto2.jpg...).
+  2. En script.js, en CONFIG.fotos y CONFIG.slides, escribe la ruta:
+       { src: "fotos/foto1.jpg", texto: "nuestra primera foto" },
+  3. Guarda y abre index.html con doble clic en tu navegador.
 
-CÓMO ABRIRLA:
-Haz doble clic en index.html.
+También puedes cambiar en CONFIG: su nombre, la fecha de inicio,
+la línea del tiempo, las tarjetas "Ábrela cuando…", las 13 razones y los vales.
 
-NOTA SOBRE MÚSICA:
-Los navegadores modernos no permiten reproducir música automáticamente
-sin interacción. Por eso la música se inicia cuando se pulsa
-"Abrir mi sorpresa".
-
-PARA PUBLICAR GRATIS:
-Puedes subir esta carpeta a GitHub Pages, Netlify o Vercel.
+Para publicarla gratis: arrastra la carpeta en app.netlify.com/drop

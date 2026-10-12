@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Trece Meses Contigo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Jost:wght@300;400;500&family=Caveat:wght@500&display=swap">
+<link rel="stylesheet" href="style1.css">
+</head>
+<body>
+
+<canvas id="cielo" aria-hidden="true"></canvas>
+
+<div class="intro" id="intro" role="dialog" aria-modal="true" aria-labelledby="intro-t">
+  <div class="intro-caja">
+    <span class="sello" aria-hidden="true">♥</span>
+    <p class="eyebrow">12 · 10 · 2026</p>
+    <h2 id="intro-t">Para ti, <span class="nombre">mi amor</span></h2>
+    <p>Hice algo especial por nuestros trece meses.</p>
+    <button class="btn" id="entrar" type="button">Abrir mi regalo</button>
+    <small>Sube el volumen ♪</small>
+  </div>
+</div>
+
+<main>
+  <header class="hero">
+    <p class="eyebrow anim">12 de octubre de 2026</p>
+    <h1 class="anim d2">Trece meses<em>contigo</em></h1>
+    <p class="fecha anim d3">Desde el 12 de septiembre de 2025, <span class="nombre">mi amor</span>.</p>
+    <div class="lunas anim d4" id="lunas" aria-label="Trece meses juntos"></div>
+    <a class="bajar" href="#tiempo">Desliza</a>
+  </header>
+
+  <section class="seccion angosto" id="tiempo" aria-labelledby="t-tiempo">
+    <div class="cabeza"><p class="eyebrow" id="t-tiempo">El tiempo que llevamos juntos</p></div>
+    <div class="contador" role="timer" aria-live="off">
+      <div><b id="c-dias">395</b><small>días</small></div>
+      <div><b id="c-horas">00</b><small>horas</small></div>
+      <div><b id="c-min">00</b><small>minutos</small></div>
+      <div><b id="c-seg">00</b><small>segundos</small></div>
+    </div>
+    <div class="datos">
+      <div><b>13</b><small>lunas llenas mirando el mismo cielo</small></div>
+      <div><b id="c-semanas">56</b><small>semanas eligiéndonos</small></div>
+      <div><b id="c-latidos">41 M</b><small>latidos que han sido tuyos</small></div>
+    </div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-collage">
+    <div class="cabeza">
+      <p class="eyebrow">Nuestro álbum</p>
+      <h2 id="t-collage">Pedacitos de nosotros</h2>
+      <p class="sub">Toca una foto para verla de cerca.</p>
+    </div>
+    <div class="collage" id="collage"></div>
+  </section>
+
+  <section class="seccion" aria-labelledby="t-slider">
+    <div class="cabeza">
+      <p class="eyebrow">Momentos</p>
+      <h2 id="t-slider">Lo que no quiero olvidar</h2>
+    </div>
+    <div class="slider" id="slider">
+      <div class="ventana"><div class="pista" id="pista"></div></div>
+      <button class="flecha izq" id="prev" type="button" aria-label="Foto anterior"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M15 5l-7 7 7 7"/></svg></button>
+      <button class="flecha der" id="next" type="button" aria-label="Foto siguiente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M9 5l7 7-7 7"/></svg></button>
+      <div class="puntos" id="puntos"></div>
+    </div>
+  </section>
+
+  <section class="seccion angosto" aria-labelledby="t-historia">
+    <div class="cabeza">
+      <p class="eyebrow">Nuestra historia</p>
+      <h2 id="t-historia">Trece meses, capítulo a capítulo</h2>
+    </div>
+    <ol class="linea-t" id="historia"></ol>
+  </section>
+
+  <section class="seccion angosto" aria-labelledby="t-carta">
+    <div class="cabeza"><p class="eyebrow">Escrita a mano, desde el corazón</p><h2 id="t-carta">Una carta para ti</h2></div>
+    <div class="sobre-wrap" id="sobre-wrap">
+      <button class="sobre" id="sobre" type="button" aria-label="Abrir la carta"><span class="sello">♥</span></button>
+      <p class="nota">Toca el sobre para abrirlo</p>
+    </div>
+    <article class="carta" id="carta" hidden>
+      <p class="saludo">Mi amor:</p>
+      <p>Hace 13 meses empezó una de las etapas más bonitas de mi vida. 13 meses en los que he podido conocerte un poco más cada día, descubrir tu forma de reír, tus ocurrencias, tu manera de pensar y esos pequeños detalles que hacen que seas tú.</p>
+
+<p>Contigo aprendí que los momentos más simples pueden convertirse en los más especiales. Gracias por tu paciencia, por tu cariño, por acompañarme incluso en los días difíciles y por hacerme sentir feliz y tranquilo solo con tenerte a mi lado.</p>
+
+<p>No sé todo lo que nos espera en el futuro, pero sí sé que quiero seguir compartiendo momentos contigo, seguir aprendiendo de ti y crear muchos más recuerdos juntos.</p>
+
+<p>Hoy, después de 13 meses, te vuelvo a elegir como aquel 12 de septiembre, y espero seguir eligiéndote cada día más. ❤️</p>
+      <p class="firma">Siempre tuyo ♥</p>
+    </article>
+  </section>
+
+  <section class="seccion angosto" aria-labelledby="t-cuando">
+    <div class="cabeza">
+      <p class="eyebrow">Para los días que lo necesites</p>
+      <h2 id="t-cuando">Ábrela cuando…</h2>
+      <p class="sub">Toca cada tarjeta para darle la vuelta.</p>
+    </div>
+    <div class="cuando" id="cuando"></div>
+  </section>
+
+  <section class="seccion angosto" aria-labelledby="t-razones">
+    <div class="cabeza"><p class="eyebrow">Una por cada mes</p><h2 id="t-razones">Trece cosas que amo de ti</h2></div>
+    <ol class="razones" id="razones"></ol>
+  </section>
+
+  <section class="seccion angosto" aria-labelledby="t-vales">
+    <div class="cabeza">
+      <p class="eyebrow">Válidos para siempre</p>
+      <h2 id="t-vales">Vales de amor</h2>
+      <p class="sub">Canjéalos cuando quieras. Yo cumplo.</p>
+    </div>
+    <div class="vales" id="vales"></div>
+  </section>
+
+  <section class="seccion cierre angosto" aria-labelledby="t-cierre">
+    <p class="eyebrow">Por muchos meses más</p>
+    <h2 id="t-cierre">¿Seguimos escribiendo esta historia?</h2>
+    <button class="btn" id="si" type="button">Sí, contigo</button>
+    <p class="respuesta" id="respuesta" aria-live="polite"></p>
+  </section>
+
+  <footer>Feliz mesiversario · 12.10.2026</footer>
+</main>
+
+<button class="musica" id="musica" type="button" aria-pressed="false" aria-label="Activar cajita musical"><span class="disco"></span><span>Cajita musical</span></button>
+
+<script src="script1.js"></script>
+</body>
+</html>
