@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz Aniversario 💕</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Pacifico&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles14.css">
+</head>
+<body>
+
+  <div class="fondo-animado" aria-hidden="true"></div>
+  <div class="fondo-corazones" id="fondo" aria-hidden="true"></div>
+  <div class="petalos" id="petalos" aria-hidden="true"></div>
+
+  <!-- Pantalla de entrada: un solo toque activa la música y abre la página -->
+  <div class="intro" id="intro" role="button" tabindex="0" aria-label="Abrir la sorpresa">
+    <div class="intro-caja">
+      <p class="intro-corazon">💖</p>
+      <p class="intro-texto">Toca para abrir tu sorpresa</p>
+      <p class="intro-sub">🎵 con música</p>
+    </div>
+  </div>
+
+  <main class="contenedor">
+
+    <!-- ===== Portada ===== -->
+    <header class="portada">
+      <p class="etiqueta">💝 Un día muy especial 💝</p>
+      <h1>¡Feliz aniversario, mi amor!</h1>
+      <p class="subtitulo">1 año y 2 meses de amor 💞</p>
+
+      <section class="escena" id="escena">
+        <svg class="personaje panda" id="panda" viewBox="0 0 220 240" role="img" aria-label="Osito panda tomando bubble tea">
+          <ellipse cx="110" cy="180" rx="72" ry="55" fill="#fff" stroke="#3a2a2a" stroke-width="4"/>
+          <ellipse cx="72" cy="224" rx="18" ry="11" fill="#3a2a2a"/>
+          <ellipse cx="148" cy="224" rx="18" ry="11" fill="#3a2a2a"/>
+          <circle cx="58" cy="50" r="20" fill="#3a2a2a"/>
+          <circle cx="162" cy="50" r="20" fill="#3a2a2a"/>
+          <circle cx="110" cy="95" r="62" fill="#fff" stroke="#3a2a2a" stroke-width="4"/>
+          <g class="ojos">
+            <ellipse cx="82" cy="92" rx="15" ry="19" fill="#3a2a2a" transform="rotate(-15 82 92)"/>
+            <ellipse cx="138" cy="92" rx="15" ry="19" fill="#3a2a2a" transform="rotate(15 138 92)"/>
+            <circle cx="86" cy="89" r="5" fill="#fff"/>
+            <circle cx="134" cy="89" r="5" fill="#fff"/>
+          </g>
+          <ellipse cx="110" cy="115" rx="7" ry="5" fill="#3a2a2a"/>
+          <path d="M100 124 Q110 133 120 124" fill="none" stroke="#3a2a2a" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="70" cy="120" rx="9" ry="6" fill="#ff9fb8" opacity=".8"/>
+          <ellipse cx="150" cy="120" rx="9" ry="6" fill="#ff9fb8" opacity=".8"/>
+          <g class="taza">
+            <rect x="132" y="150" width="46" height="60" rx="8" fill="#e9c9a0" stroke="#3a2a2a" stroke-width="3"/>
+            <rect x="128" y="141" width="54" height="11" rx="4" fill="#ffb3c6" stroke="#3a2a2a" stroke-width="3"/>
+            <line x1="155" y1="141" x2="166" y2="98" stroke="#5ec8ff" stroke-width="6" stroke-linecap="round"/>
+            <circle cx="143" cy="198" r="4" fill="#4a2f22"/>
+            <circle cx="155" cy="192" r="4" fill="#4a2f22"/>
+            <circle cx="167" cy="199" r="4" fill="#4a2f22"/>
+          </g>
+          <ellipse cx="128" cy="180" rx="12" ry="10" fill="#fff" stroke="#3a2a2a" stroke-width="3"/>
+        </svg>
+
+        <svg class="personaje oso" id="oso" viewBox="0 0 200 220" role="img" aria-label="Osito café enamorado">
+          <ellipse cx="100" cy="180" rx="68" ry="50" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <ellipse cx="70" cy="212" rx="18" ry="11" fill="#5a3a2a"/>
+          <ellipse cx="130" cy="212" rx="18" ry="11" fill="#5a3a2a"/>
+          <circle cx="45" cy="60" r="20" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <circle cx="155" cy="60" r="20" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <circle cx="100" cy="95" r="62" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <ellipse cx="100" cy="115" rx="28" ry="22" fill="#f3d1a8"/>
+          <g class="ojos">
+            <circle cx="78" cy="88" r="7" fill="#3a2a2a"/>
+            <circle cx="122" cy="88" r="7" fill="#3a2a2a"/>
+            <circle cx="80" cy="86" r="2.5" fill="#fff"/>
+            <circle cx="124" cy="86" r="2.5" fill="#fff"/>
+          </g>
+          <ellipse cx="100" cy="106" rx="6" ry="4.5" fill="#3a2a2a"/>
+          <path d="M92 118 Q100 126 108 118" fill="none" stroke="#3a2a2a" stroke-width="3" stroke-linecap="round"/>
+          <ellipse cx="62" cy="108" rx="10" ry="7" fill="#ff7f9a" opacity=".7"/>
+          <ellipse cx="138" cy="108" rx="10" ry="7" fill="#ff7f9a" opacity=".7"/>
+          <ellipse cx="42" cy="182" rx="16" ry="12" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <ellipse cx="158" cy="182" rx="16" ry="12" fill="#c98b5b" stroke="#5a3a2a" stroke-width="4"/>
+          <g transform="translate(168 22)">
+            <g class="latido">
+              <path d="M0,-10 C-10,-25 -35,-5 0,20 C35,-5 10,-25 0,-10 Z" fill="#ff4d6d"/>
+            </g>
+          </g>
+        </svg>
+      </section>
+
+      <button class="btn abrazo-btn" id="btn-abrazo" type="button">🤗 Dar un abrazo</button>
+    </header>
+
+    <!-- ===== Contador ===== -->
+    <section class="tarjeta">
+      <h2 class="titulo-seccion">Llevamos juntos ⏳</h2>
+      <div class="contador-grid">
+        <div class="caja"><b id="dias">0</b><span>días</span></div>
+        <div class="caja"><b id="horas">00</b><span>horas</span></div>
+        <div class="caja"><b id="minutos">00</b><span>min</span></div>
+        <div class="caja"><b id="segundos">00</b><span>seg</span></div>
+      </div>
+      <p class="proximo" id="proximo"></p>
+    </section>
+
+    <!-- ===== Carrusel de fotos ===== -->
+    <section class="tarjeta">
+      <h2 class="titulo-seccion">Nuestros momentos 📸</h2>
+      <div class="carrusel" id="carrusel">
+        <div class="pista" id="pista"></div>
+        <button class="flecha izq" id="prev" type="button" aria-label="Foto anterior">‹</button>
+        <button class="flecha der" id="next" type="button" aria-label="Foto siguiente">›</button>
+      </div>
+      <div class="puntos" id="puntos"></div>
+    </section>
+
+    <!-- ===== Razones (tarjetas que giran) ===== -->
+    <section class="tarjeta">
+      <h2 class="titulo-seccion">Razones por las que te quiero 💗</h2>
+      <p class="ayuda">Toca cada tarjeta 👆</p>
+      <div class="razones" id="razones"></div>
+    </section>
+
+    <!-- ===== Línea de tiempo ===== -->
+    <section class="tarjeta">
+      <h2 class="titulo-seccion">Nuestra historia 🗓️</h2>
+      <ol class="linea" id="linea"></ol>
+    </section>
+
+    <!-- ===== Mensaje escrito ===== -->
+    <section class="tarjeta mensaje-tarjeta">
+      <div class="mensaje" id="mensaje"></div>
+    </section>
+
+    <div class="controles">
+      <button class="btn" id="btn-musica" type="button">🎵 Poner música</button>
+      <button class="btn secundario" id="btn-sorpresa" type="button">💌 Sorpresa</button>
+    </div>
+
+    <!-- Carta oculta: se muestra con el botón Sorpresa -->
+    <article class="carta" id="carta">
+      <h2>Para ti 💗</h2>
+      <p>Mi amor, cada día a tu lado me enseña algo nuevo sobre el amor: que se construye con detalles, con paciencia y con risas compartidas.</p>
+      <p>Gracias por ser mi calma, mi mejor compañía y mi lugar seguro. Contigo, hasta lo más simple se siente especial.</p>
+      <p>Que este sea solo el comienzo de muchos más aniversarios juntos. Te amo, hoy y siempre. 🐼💕🧸</p>
+    </article>
+
+    <footer class="pie-pagina">Hecho con amor 🐼🧸 · 12 de noviembre</footer>
+  </main>
+
+  <!-- Visor de fotos ampliadas -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true">
+    <img id="lb-img" alt="Foto ampliada">
+    <button class="lb-cerrar" id="lb-cerrar" type="button" aria-label="Cerrar">✕</button>
+  </div>
+
+  <!-- Tu canción: pon un archivo musica.mp3 junto a index.html (si no existe, suena una melodía generada) -->
+  <audio id="musica" src="bubu.mp3" loop preload="auto"></audio>
+
+  <script src="script14.js"></script>
+</body>
+</html>
